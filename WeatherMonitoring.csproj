@@ -11,7 +11,6 @@
       <Folder Include="Abstractions\" />
       <Folder Include="Bots\" />
       <Folder Include="Configurations\" />
-      <Folder Include="Models\" />
       <Folder Include="Parsers\" />
       <Folder Include="Services\" />
     </ItemGroup>
