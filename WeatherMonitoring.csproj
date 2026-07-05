@@ -8,7 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Bots\" />
       <Folder Include="Models\" />
       <Folder Include="Configurations\" />
     </ItemGroup>
