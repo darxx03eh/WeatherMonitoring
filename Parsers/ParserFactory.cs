@@ -7,7 +7,7 @@ namespace WeatherMonitoring.Parsers;
 
 public static class ParserFactory
 {
-    public static OneOf<IWeatherParser, ArgumentException, NotSupportedException> GetParser(string data)
+    public static OneOf<IWeatherParser, ArgumentException, NotSupportedException> GetParser(string? data)
     {
         data = data.Trim();
         if (string.IsNullOrWhiteSpace(data) || data.Length == 0)
