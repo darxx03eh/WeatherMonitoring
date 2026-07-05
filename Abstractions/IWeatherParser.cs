@@ -4,5 +4,5 @@ namespace WeatherMonitoring.Abstractions;
 
 public interface IWeatherParser
 {
-    WeatherData? Parse(string data);
+    WeatherData? Parse(string? data);
 }
