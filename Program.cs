@@ -8,6 +8,12 @@ namespace WeatherMonitoring;
 
 class Program
 {
+    /// <summary>
+    /// Application entry point. Loads configuration, sets up weather observers, registers them
+    /// with the weather station, reads weather data from console input, parses it, and publishes
+    /// it to all registered observers.
+    /// </summary>
+    /// <param name="args">Command-line arguments (unused).</param>
     static void Main(string[] args)
     {
         var config = ConfigurationsLoader.LoadConfigurations();
@@ -27,8 +33,7 @@ class Program
                 weatherData = parser.Parse(input);
             },
             argumentException => Console.Error.WriteLine($"Argument Error: {argumentException.Message}"),
-            notSupportedException => Console.Error.Write($"Not Supported Error: {notSupportedException.Message}")
-            );
+            notSupportedException => Console.Error.Write($"Not Supported Error: {notSupportedException.Message}"));
         weatherStation.Publish(weatherData);
     }
 }
