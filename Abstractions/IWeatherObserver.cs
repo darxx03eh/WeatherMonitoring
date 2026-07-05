@@ -4,5 +4,5 @@ namespace WeatherMonitoring.Abstractions;
 
 public interface IWeatherObserver
 {
-    void Update(WeatherData weather);
+    void Update(WeatherData? weather);
 }
