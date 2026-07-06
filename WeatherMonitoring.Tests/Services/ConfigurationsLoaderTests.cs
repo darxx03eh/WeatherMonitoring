@@ -11,7 +11,7 @@ namespace WeatherMonitoring.Tests.Services;
 public sealed class ConfigurationsLoaderTests
 {
     [Theory]
-    [ObjectTypeData(@"Services\ConfigurationsLoader\config-test-data.csv", typeof(ConfigTestCaseRow))]
+    [ObjectTypeData(typeof(ConfigTestCaseRow), "Services", "ConfigurationsLoader", "config-test-data.csv")]
     public void Load_ShouldReturnConfiguration_WhenJsonIsValid(ConfigTestCaseRow testCase)
     {
         var result = ConfigurationsLoader.Deserialize(testCase.Input);
@@ -44,7 +44,7 @@ public sealed class ConfigurationsLoaderTests
     }
 
     [Theory]
-    [ObjectTypeData(@"Services\ConfigurationsLoader\missing-file-test-data.csv", typeof(InputTestCaseRow))]
+    [ObjectTypeData(typeof(InputTestCaseRow), "Services", "ConfigurationsLoader", "missing-file-test-data.csv")]
     public void Load_ShouldThrowFileNotFoundException_WhenFileDoesNotExist(InputTestCaseRow testCase)
     {
         Action act = () => ConfigurationsLoader.LoadConfigurations(testCase.Input);
@@ -53,7 +53,7 @@ public sealed class ConfigurationsLoaderTests
             .WithMessage($"Configuration file not found at: {testCase.Input}");
     }
     [Theory]
-    [ObjectTypeData(@"Services\ConfigurationsLoader\invalid-json-test-data.csv", typeof(InputTestCaseRow))]
+    [ObjectTypeData(typeof(InputTestCaseRow), "Services", "ConfigurationsLoader", "invalid-json-test-data.csv")]
     public void Load_ShouldThrowJsonException_WhenJsonIsInvalid(InputTestCaseRow testCase)
     {
         Action act = () => ConfigurationsLoader.Deserialize(testCase.Input);
