@@ -20,6 +20,6 @@ public class ValidXmlDataAttribute : DataAttribute
         var records = csv.GetRecords<WeatherDataTestCaseRow>();
 
         foreach (var record in records)
-            yield return [record.Input];
+            yield return [record];
     }
 }
