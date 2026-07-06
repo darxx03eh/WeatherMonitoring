@@ -1,0 +1,7 @@
+﻿Input,ExpectedLocation,ExpectedTemperature,ExpectedHumidity
+"<WeatherData><Location>Cairo</Location><Temperature>32</Temperature><Humidity>40</Humidity></WeatherData>",Cairo,32,40
+"<WeatherData><Location>New York</Location><Temperature>18.5</Temperature><Humidity>65</Humidity></WeatherData>",New York,18.5,65
+"<WeatherData><Location>Tokyo</Location><Temperature>-2</Temperature><Humidity>80</Humidity></WeatherData>",Tokyo,-2,80
+"<WeatherData><Location>Dubai</Location><Temperature>45.75</Temperature><Humidity>15</Humidity></WeatherData>",Dubai,45.75,15
+"<WeatherData><Location>London</Location><Temperature>0</Temperature><Humidity>90</Humidity></WeatherData>",London,0,90
+"<WeatherData><Location>Sydney</Location><Temperature>25</Temperature><Humidity>55</Humidity></WeatherData>",Sydney,25,55
