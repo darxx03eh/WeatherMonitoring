@@ -1,0 +1,7 @@
+﻿Input
+"<WeatherData><Location>Cairo</Location><Temperature>32</Temperature><Humidity>40</Humidity></WeatherData>"
+"<WeatherData><Location>New York</Location><Temperature>18.5</Temperature><Humidity>65</Humidity></WeatherData>"
+"<WeatherData><Location>Tokyo</Location><Temperature>-2</Temperature><Humidity>80</Humidity></WeatherData>"
+"<WeatherData><Location>Dubai</Location><Temperature>45.75</Temperature><Humidity>15</Humidity></WeatherData>"
+"<WeatherData><Location>London</Location><Temperature>0</Temperature><Humidity>90</Humidity></WeatherData>"
+"<WeatherData><Location>Sydney</Location><Temperature>25</Temperature><Humidity>55</Humidity></WeatherData>"

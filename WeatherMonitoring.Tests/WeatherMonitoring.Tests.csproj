@@ -43,6 +43,15 @@
       <None Update="TestData\Parsers\XmlWeatherParser\invalid-xml-test-data.csv">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="TestData\Parsers\ParserFactory\invalid-input-test-data.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="TestData\Parsers\ParserFactory\valid-json-test-data.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="TestData\Parsers\ParserFactory\valid-xml-test-data.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
