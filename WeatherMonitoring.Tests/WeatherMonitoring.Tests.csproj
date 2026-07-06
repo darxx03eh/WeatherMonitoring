@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="coverlet.collector" Version="6.0.4"/>
+        <PackageReference Include="CsvHelper" Version="33.1.0" />
         <PackageReference Include="FluentAssertions" Version="8.10.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1"/>
         <PackageReference Include="xunit" Version="2.9.3"/>
@@ -24,7 +25,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="TestData\" />
+      <None Update="TestData\Services\ConfigurationsLoader\config-test-data.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="TestData\Services\ConfigurationsLoader\missing-file-test-data.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="TestData\Services\ConfigurationsLoader\invalid-json-data.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
