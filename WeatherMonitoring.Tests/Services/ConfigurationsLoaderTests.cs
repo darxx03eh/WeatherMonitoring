@@ -1,10 +1,9 @@
 ﻿using System.Text.Json;
-using System.Xml;
 using FluentAssertions;
 using WeatherMonitoring.Configurations;
 using WeatherMonitoring.Services;
 using WeatherMonitoring.Tests.Attributes.ConfigurationAttributes;
-using WeatherMonitoring.Tests.TestModels;
+using WeatherMonitoring.Tests.TestModels.Services;
 
 namespace WeatherMonitoring.Tests.Services;
 

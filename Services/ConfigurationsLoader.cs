@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Runtime.CompilerServices;
+using System.Text;
 using System.Text.Json;
 using WeatherMonitoring.Configurations;
 
@@ -28,7 +29,6 @@ public static class ConfigurationsLoader
         string botConfigs = File.ReadAllText(path, Encoding.UTF8);
         return Deserialize(botConfigs);
     }
-
     /// <summary>
     /// Reads configuration from Configurations\configs.json relative to the application base directory,
     /// then deserializes it into an <see cref="ApplicationConfigurations"/> object.
@@ -39,7 +39,7 @@ public static class ConfigurationsLoader
     /// </returns>
     /// <exception cref="FileNotFoundException">Thrown when the configuration file does not exist at the expected path.</exception>
     /// <exception cref="JsonException">Thrown when the file content is not valid JSON or does not match the expected shape.</exception>
-    public static ApplicationConfigurations? Deserialize(string json)
+    internal static ApplicationConfigurations? Deserialize(string json)
         => JsonSerializer.Deserialize<ApplicationConfigurations>(json, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true

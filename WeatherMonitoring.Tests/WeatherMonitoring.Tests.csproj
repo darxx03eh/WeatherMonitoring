@@ -31,7 +31,10 @@
       <None Update="TestData\Services\ConfigurationsLoader\missing-file-test-data.csv">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="TestData\Services\ConfigurationsLoader\invalid-json-data.csv">
+      <None Update="TestData\Services\ConfigurationsLoader\invalid-json-test-data.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="TestData\Parsers\JsonWeatherParser\valid-json-test-data.csv">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
