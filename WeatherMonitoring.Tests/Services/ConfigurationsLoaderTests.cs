@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Text.Json;
+using System.Xml;
 using FluentAssertions;
 using WeatherMonitoring.Configurations;
 using WeatherMonitoring.Services;
@@ -50,5 +51,14 @@ public sealed class ConfigurationsLoaderTests
 
         act.Should().Throw<FileNotFoundException>()
             .WithMessage($"Configuration file not found at: {path}");
+    }
+
+    [Theory]
+    [InvalidJsonData]
+    public void Load_ShouldThrowJsonException_WhenJsonIsInvalid(string json)
+    {
+        Action act = () => ConfigurationsLoader.Deserialize(json);
+
+        act.Should().Throw<JsonException>();
     }
 }

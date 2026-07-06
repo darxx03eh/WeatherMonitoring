@@ -1,0 +1,10 @@
+﻿Input
+"{""RainBot"":{""enabled"":true,""humidityThreshold"":70,""message"":""Missing closing brace""}"
+"{""RainBot"":{""enabled"":true,,""humidityThreshold"":70}}"
+"{RainBot:{""enabled"":true}}"
+"{""RainBot"":{""enabled"":true,""humidityThreshold"":}}"
+"{""RainBot"":{""enabled"":tru,""humidityThreshold"":70}}"
+"{""RainBot"":{""enabled"":true,""humidityThreshold"":70,}}"
+"[{""RainBot"":{""enabled"":true}}]"
+"{""RainBot"":{""enabled"":true} ""SunBot"":{""enabled"":false}}"
+"{'RainBot':{'enabled':true}}"
