@@ -12,14 +12,14 @@ public class ValidJsonDataAttribute : DataAttribute
     {
         var path = Path.Combine(AppContext.BaseDirectory,
             "TestData",
-            "Parsers", "FactoryParser",
+            "Parsers", "JsonWeatherParser",
             "valid-json-test-data.csv");
 
         using var reader = new StreamReader(path);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-        var records = csv.GetRecords<ValidInputTestCaseRow>();
+        var records = csv.GetRecords<WeatherDataTestCaseRow>();
 
         foreach (var record in records)
-            yield return [record.Input];
+            yield return [record];
     }
 }
