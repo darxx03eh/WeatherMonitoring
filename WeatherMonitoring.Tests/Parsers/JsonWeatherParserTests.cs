@@ -3,9 +3,10 @@ using FluentAssertions;
 using WeatherMonitoring.Abstractions;
 using WeatherMonitoring.Models;
 using WeatherMonitoring.Parsers;
-using WeatherMonitoring.Tests.Attributes.ConfigurationAttributes;
-using WeatherMonitoring.Tests.Attributes.ParserAttributes;
+using WeatherMonitoring.Tests.Attributes;
+using WeatherMonitoring.Tests.TestModels;
 using WeatherMonitoring.Tests.TestModels.Parsers;
+using WeatherMonitoring.Tests.TestModels.Services;
 
 namespace WeatherMonitoring.Tests.Parsers;
 
@@ -14,7 +15,7 @@ public sealed class JsonWeatherParserTests
     private readonly IWeatherParser _weatherParser;
     public JsonWeatherParserTests() => _weatherParser = new JsonWeatherParser();
     [Theory]
-    [ValidJsonData]
+    [ObjectTypeData(@"Parsers\JsonWeatherParser\valid-json-test-data.csv", typeof(WeatherDataTestCaseRow))]
     public void Parse_ShouldReturnWeatherData_WhenJsonValid(WeatherDataTestCaseRow testCase)
     {
         var result = _weatherParser.Parse(testCase.Input);
@@ -32,10 +33,10 @@ public sealed class JsonWeatherParserTests
     }
 
     [Theory]
-    [InvalidJsonData]
-    public void Parse_ShouldThrowJsonException_WhenJsonInvalid(string input)
+    [ObjectTypeData(@"Services\ConfigurationsLoader\invalid-json-test-data.csv", typeof(InputTestCaseRow))]
+    public void Parse_ShouldThrowJsonException_WhenJsonInvalid(InputTestCaseRow testCase)
     {
-        Action act = () => _weatherParser.Parse(input);
+        Action act = () => _weatherParser.Parse(testCase.Input);
 
         act.Should().Throw<JsonException>();
     }
