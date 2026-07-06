@@ -1,0 +1,9 @@
+﻿Input
+"<WeatherData><Location>Cairo</Location><Temperature>32</Temperature><Humidity>40</Humidity>"
+"<WeatherData><Location>Cairo</Location><Temperature>32</Temperature><Humidity>40</WeatherData>"
+"<WeatherData><Location>Cairo<Temperature>32</Temperature><Humidity>40</Humidity></Location></WeatherData>"
+"<weatherdata><Location>Cairo</Location><Temperature>32</Temperature><Humidity>40</Humidity></weatherdata>"
+"<WeatherData><Location>Cairo</Location><Temperature>abc</Temperature><Humidity>40</Humidity></WeatherData>"
+"<WeatherData><Location>Cairo</Location><Temperature>32<Humidity>40</Humidity></Temperature></WeatherData>"
+"Not XML at all, just plain text"
+"<WeatherData><Location>Cairo</Location><Temperature>32</Temperature><Humidity>forty</Humidity></WeatherData>"
