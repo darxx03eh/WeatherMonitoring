@@ -9,5 +9,6 @@ public sealed class BotConfigurations
     public decimal? HumidityThreshold { get; set; }
     [JsonIgnore]
     public decimal Threshold => TemperatureThreshold ?? HumidityThreshold ?? 0.0m;
-    public string? Message { get; set; }
+
+    public string Message { get; set; } = "";
 }
