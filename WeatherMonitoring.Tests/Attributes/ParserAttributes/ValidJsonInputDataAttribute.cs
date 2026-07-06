@@ -6,13 +6,13 @@ using Xunit.Sdk;
 
 namespace WeatherMonitoring.Tests.Attributes.ParserAttributes;
 
-public class ValidJsonDataAttribute : DataAttribute
+public class ValidJsonInputDataAttribute : DataAttribute
 {
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
         var path = Path.Combine(AppContext.BaseDirectory,
             "TestData",
-            "Parsers", "FactoryParser",
+            "Parsers", "ParserFactory",
             "valid-json-test-data.csv");
 
         using var reader = new StreamReader(path);

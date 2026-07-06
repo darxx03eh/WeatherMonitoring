@@ -1,0 +1,9 @@
+﻿Input
+"plain text, not json or xml"
+"{unquoted: keys}"
+"<unclosed tag"
+"just some random string {} <>"
+"12345"
+"null"
+"true"
+"---not yaml either---"

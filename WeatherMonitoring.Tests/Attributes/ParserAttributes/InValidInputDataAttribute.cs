@@ -6,18 +6,18 @@ using Xunit.Sdk;
 
 namespace WeatherMonitoring.Tests.Attributes.ParserAttributes;
 
-public class ValidJsonDataAttribute : DataAttribute
+public class InValidInputDataAttribute : DataAttribute
 {
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
         var path = Path.Combine(AppContext.BaseDirectory,
             "TestData",
-            "Parsers", "FactoryParser",
-            "valid-json-test-data.csv");
+            "Parsers", "ParserFactory",
+            "invalid-input-test-data.csv");
 
         using var reader = new StreamReader(path);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-        var records = csv.GetRecords<ValidInputTestCaseRow>();
+        var records = csv.GetRecords<InvalidInputTestCaseRow>();
 
         foreach (var record in records)
             yield return [record.Input];
