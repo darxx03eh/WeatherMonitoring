@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Xunit.Sdk;
 
-namespace WeatherMonitoring.Tests.Attributes.ParserAttributes;
+namespace WeatherMonitoring.Tests.Attributes;
 
 public class NullOrWhiteSpaceDataAttribute : DataAttribute
 {

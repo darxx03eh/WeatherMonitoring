@@ -2,7 +2,8 @@
 using FluentAssertions;
 using WeatherMonitoring.Configurations;
 using WeatherMonitoring.Services;
-using WeatherMonitoring.Tests.Attributes.ConfigurationAttributes;
+using WeatherMonitoring.Tests.Attributes;
+using WeatherMonitoring.Tests.TestModels;
 using WeatherMonitoring.Tests.TestModels.Services;
 
 namespace WeatherMonitoring.Tests.Services;
@@ -10,7 +11,7 @@ namespace WeatherMonitoring.Tests.Services;
 public sealed class ConfigurationsLoaderTests
 {
     [Theory]
-    [ApplicationConfigurationsData]
+    [ObjectTypeData(@"Services\ConfigurationsLoader\config-test-data.csv", typeof(ConfigTestCaseRow))]
     public void Load_ShouldReturnConfiguration_WhenJsonIsValid(ConfigTestCaseRow testCase)
     {
         var result = ConfigurationsLoader.Deserialize(testCase.Input);
@@ -43,20 +44,19 @@ public sealed class ConfigurationsLoaderTests
     }
 
     [Theory]
-    [MissingFileData]
-    public void Load_ShouldThrowFileNotFoundException_WhenFileDoesNotExist(string path)
+    [ObjectTypeData(@"Services\ConfigurationsLoader\missing-file-test-data.csv", typeof(InputTestCaseRow))]
+    public void Load_ShouldThrowFileNotFoundException_WhenFileDoesNotExist(InputTestCaseRow testCase)
     {
-        Action act = () => ConfigurationsLoader.LoadConfigurations(path);
+        Action act = () => ConfigurationsLoader.LoadConfigurations(testCase.Input);
 
         act.Should().Throw<FileNotFoundException>()
-            .WithMessage($"Configuration file not found at: {path}");
+            .WithMessage($"Configuration file not found at: {testCase.Input}");
     }
-
     [Theory]
-    [InvalidJsonData]
-    public void Load_ShouldThrowJsonException_WhenJsonIsInvalid(string json)
+    [ObjectTypeData(@"Services\ConfigurationsLoader\invalid-json-test-data.csv", typeof(InputTestCaseRow))]
+    public void Load_ShouldThrowJsonException_WhenJsonIsInvalid(InputTestCaseRow testCase)
     {
-        Action act = () => ConfigurationsLoader.Deserialize(json);
+        Action act = () => ConfigurationsLoader.Deserialize(testCase.Input);
 
         act.Should().Throw<JsonException>();
     }

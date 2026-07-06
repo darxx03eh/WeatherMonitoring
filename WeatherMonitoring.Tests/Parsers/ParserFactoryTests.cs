@@ -1,7 +1,9 @@
 ﻿using FluentAssertions;
 using WeatherMonitoring.Abstractions;
 using WeatherMonitoring.Parsers;
-using WeatherMonitoring.Tests.Attributes.ParserAttributes;
+using WeatherMonitoring.Tests.Attributes;
+using WeatherMonitoring.Tests.TestModels;
+using WeatherMonitoring.Tests.TestModels.Parsers;
 
 namespace WeatherMonitoring.Tests.Parsers;
 
@@ -21,10 +23,10 @@ public sealed class ParserFactoryTests
     }
 
     [Theory]
-    [InValidInputData]
-    public void Initialize_ShouldReturnNotSupportedException_WhenInputIsInvalidOrNotSupported(string? input)
+    [ObjectTypeData(@"Parsers\ParserFactory\invalid-input-test-data.csv", typeof(InputTestCaseRow))]
+    public void Initialize_ShouldReturnNotSupportedException_WhenInputIsInvalidOrNotSupported(InputTestCaseRow testCase)
     {
-        var result = ParserFactory.GetParser(input);
+        var result = ParserFactory.GetParser(testCase.Input);
         
         result.IsT0.Should().BeFalse();
         result.IsT1.Should().BeFalse();
@@ -34,10 +36,10 @@ public sealed class ParserFactoryTests
     }
 
     [Theory]
-    [ValidJsonInputData]
-    public void Initialize_ShouldReturnJsonWeatherParser_WhenInputIsJsonFormat(string? input)
+    [ObjectTypeData(@"Parsers\ParserFactory\valid-json-test-data.csv", typeof(InputTestCaseRow))]
+    public void Initialize_ShouldReturnJsonWeatherParser_WhenInputIsJsonFormat(InputTestCaseRow testCase)
     {
-        var result =  ParserFactory.GetParser(input);
+        var result =  ParserFactory.GetParser(testCase.Input);
 
         result.IsT0.Should().BeTrue();
         result.IsT1.Should().BeFalse();
@@ -46,10 +48,10 @@ public sealed class ParserFactoryTests
         result.AsT0.Should().BeAssignableTo<IWeatherParser>();
     }
     [Theory]
-    [ValidXmlInputData]
-    public void Initialize_ShouldReturnXmlWeatherParser_WhenInputIsXmlFormat(string input)
+    [ObjectTypeData(@"Parsers\ParserFactory\valid-xml-test-data.csv", typeof(InputTestCaseRow))]
+    public void Initialize_ShouldReturnXmlWeatherParser_WhenInputIsXmlFormat(InputTestCaseRow testCase)
     {
-        var result =  ParserFactory.GetParser(input);
+        var result =  ParserFactory.GetParser(testCase.Input);
 
         result.IsT0.Should().BeTrue();
         result.IsT1.Should().BeFalse();
