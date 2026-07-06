@@ -1,0 +1,7 @@
+﻿Input,ExpectedLocation,ExpectedTemperature,ExpectedHumidity
+"{""Location"":""Cairo"",""Temperature"":32,""Humidity"":40}",Cairo,32,40
+"{""Location"":""New York"",""Temperature"":18.5,""Humidity"":65}",New York,18.5,65
+"{""Location"":""Tokyo"",""Temperature"":-2,""Humidity"":80}",Tokyo,-2,80
+"{""Location"":""Dubai"",""Temperature"":45.75,""Humidity"":15}",Dubai,45.75,15
+"{""Location"":""London"",""Temperature"":0,""Humidity"":90}",London,0,90
+"{""Location"":""Sydney"",""Temperature"":25,""Humidity"":55}",Sydney,25,55

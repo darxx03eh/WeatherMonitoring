@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Reflection;
 using CsvHelper;
-using WeatherMonitoring.Tests.TestModels;
+using WeatherMonitoring.Tests.TestModels.Services;
 using Xunit.Sdk;
 
 namespace WeatherMonitoring.Tests.Attributes.ConfigurationAttributes;

@@ -1,24 +1,25 @@
 ﻿using System.Globalization;
 using System.Reflection;
 using CsvHelper;
-using WeatherMonitoring.Tests.TestModels.Services;
+using WeatherMonitoring.Tests.TestModels.Parsers;
 using Xunit.Sdk;
 
-namespace WeatherMonitoring.Tests.Attributes.ConfigurationAttributes;
+namespace WeatherMonitoring.Tests.Attributes.ParserAttributes;
 
-public class MissingFileDataAttribute : DataAttribute
+public class ValidJsonDataAttribute : DataAttribute
 {
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
         var path = Path.Combine(AppContext.BaseDirectory,
             "TestData",
-            "Services", "ConfigurationsLoader",
-            "missing-file-test-data.csv");
+            "Parsers", "JsonWeatherParser",
+            "valid-json-test-data.csv");
 
         using var reader = new StreamReader(path);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-        var records = csv.GetRecords<MissingFileTestCaseRow>();
+        var records = csv.GetRecords<WeatherDataTestCaseRow>();
+
         foreach (var record in records)
-            yield return [record.Path];
+            yield return [record];
     }
 }

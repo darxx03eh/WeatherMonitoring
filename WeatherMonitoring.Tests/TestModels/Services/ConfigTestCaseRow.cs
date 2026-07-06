@@ -1,4 +1,4 @@
-﻿namespace WeatherMonitoring.Tests.TestModels;
+﻿namespace WeatherMonitoring.Tests.TestModels.Services;
 
 public sealed class ConfigTestCaseRow
 {
