@@ -10,7 +10,8 @@ public class ObjectTypeDataAttribute : DataAttribute
 {
     private readonly string _path;
     private readonly Type _type;
-    public ObjectTypeDataAttribute(string path,  Type type) => (_path, _type) = (path, type);
+    public ObjectTypeDataAttribute(Type type, params string[] path)
+        => (_type, _path) = (type, Path.Combine(path));
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
         var path = Path.Combine(AppContext.BaseDirectory, "TestData", _path);
