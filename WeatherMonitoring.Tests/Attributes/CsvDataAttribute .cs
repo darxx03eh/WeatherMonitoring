@@ -14,9 +14,7 @@ public class ObjectTypeDataAttribute : DataAttribute
         => (_type, _path) = (type, Path.Combine(path));
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
-        var path = Path.Combine(AppContext.BaseDirectory, "TestData", _path);
-
-        using var reader = new StreamReader(path);
+        using var reader = new StreamReader(Path.Combine(AppContext.BaseDirectory, _path));
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         var records = csv.GetRecords(_type);
         foreach(var record in records)
