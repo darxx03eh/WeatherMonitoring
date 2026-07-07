@@ -7,6 +7,12 @@ namespace WeatherMonitoring.Parsers;
 
 public static class ParserFactory
 {
+    public static readonly List<(Func<string, bool> match, IWeatherParser weatherParser)> Parse
+        = new()
+        {
+            (input => input?[0] is '{' or '[' && IsValidJson(input), new JsonWeatherParser()),
+            (input => input?[0] is '<' && IsValidXml(input), new XmlWeatherParser())
+        };
     /// <summary>
     /// Determines the appropriate <see cref="IWeatherParser"/> for the given input based on its format.
     /// Returns a <see cref="JsonWeatherParser"/> if the input is valid JSON,
@@ -27,11 +33,10 @@ public static class ParserFactory
         if (data.Length > 0 && data[0] == '\uFEFF')
             data = data?.Substring(1);
 
-        if (data?[0] is '{' or '[' && IsValidJson(data))
-            return new JsonWeatherParser();
-        else if (data?[0] is '<' && IsValidXml(data))
-            return new XmlWeatherParser();
-        else return new NotSupportedException("This format is not supported.");
+        var (_, weatherParser) = Parse.FirstOrDefault(entry => entry.match(data));
+        return weatherParser is not null
+            ? OneOf<IWeatherParser, ArgumentException, NotSupportedException>.FromT0(weatherParser)
+            : new NotSupportedException("This format is not supported.");
     }
     /// <summary>
     /// Verifies if the input is formatted as JSON Format
