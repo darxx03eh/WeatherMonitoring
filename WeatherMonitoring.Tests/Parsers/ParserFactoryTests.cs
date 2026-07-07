@@ -23,7 +23,7 @@ public sealed class ParserFactoryTests
     }
 
     [Theory]
-    [ObjectTypeData(typeof(InputTestCaseRow), "Parsers", "ParserFactory", "invalid-input-test-data.csv")]
+    [ObjectTypeData(typeof(InputTestCaseRow), "TestData", "Parsers", "ParserFactory", "invalid-input-test-data.csv")]
     public void Initialize_ShouldReturnNotSupportedException_WhenInputIsInvalidOrNotSupported(InputTestCaseRow testCase)
     {
         var result = ParserFactory.GetParser(testCase.Input);
@@ -36,7 +36,7 @@ public sealed class ParserFactoryTests
     }
 
     [Theory]
-    [ObjectTypeData(typeof(InputTestCaseRow), "Parsers", "ParserFactory", "valid-json-test-data.csv")]
+    [ObjectTypeData(typeof(InputTestCaseRow), "TestData", "Parsers", "ParserFactory", "valid-json-test-data.csv")]
     public void Initialize_ShouldReturnJsonWeatherParser_WhenInputIsJsonFormat(InputTestCaseRow testCase)
     {
         var result =  ParserFactory.GetParser(testCase.Input);
@@ -48,7 +48,7 @@ public sealed class ParserFactoryTests
         result.AsT0.Should().BeAssignableTo<IWeatherParser>();
     }
     [Theory]
-    [ObjectTypeData(typeof(InputTestCaseRow),  "Parsers", "ParserFactory", "valid-xml-test-data.csv")]
+    [ObjectTypeData(typeof(InputTestCaseRow),  "TestData", "Parsers", "ParserFactory", "valid-xml-test-data.csv")]
     public void Initialize_ShouldReturnXmlWeatherParser_WhenInputIsXmlFormat(InputTestCaseRow testCase)
     {
         var result =  ParserFactory.GetParser(testCase.Input);
