@@ -15,7 +15,7 @@ public sealed class JsonWeatherParserTests
     private readonly IWeatherParser _weatherParser;
     public JsonWeatherParserTests() => _weatherParser = new JsonWeatherParser();
     [Theory]
-    [ObjectTypeData(typeof(WeatherDataTestCaseRow), "TestData", "Parsers", "JsonWeatherParser", "valid-json-test-data.csv")]
+    [CsvData(typeof(WeatherDataTestCaseRow), "TestData", "Parsers", "JsonWeatherParser", "valid-json-test-data.csv")]
     public void Parse_ShouldReturnWeatherData_WhenJsonValid(WeatherDataTestCaseRow testCase)
     {
         var result = _weatherParser.Parse(testCase.Input);
@@ -33,7 +33,7 @@ public sealed class JsonWeatherParserTests
     }
 
     [Theory]
-    [ObjectTypeData(typeof(InputTestCaseRow), "TestData", "Services", "ConfigurationsLoader", "invalid-json-test-data.csv")]
+    [CsvData(typeof(InputTestCaseRow), "TestData", "Services", "ConfigurationsLoader", "invalid-json-test-data.csv")]
     public void Parse_ShouldThrowJsonException_WhenJsonInvalid(InputTestCaseRow testCase)
     {
         Action act = () => _weatherParser.Parse(testCase.Input);

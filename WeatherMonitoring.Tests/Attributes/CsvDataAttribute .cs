@@ -6,11 +6,11 @@ using Xunit.Sdk;
 
 namespace WeatherMonitoring.Tests.Attributes;
 
-public class ObjectTypeDataAttribute : DataAttribute
+public class CsvDataAttribute : DataAttribute
 {
     private readonly string _path;
     private readonly Type _type;
-    public ObjectTypeDataAttribute(Type type, params string[] path)
+    public CsvDataAttribute (Type type, params string[] path)
         => (_type, _path) = (type, Path.Combine(path));
     public override IEnumerable<object[]> GetData(MethodInfo testMethod)
     {
