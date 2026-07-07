@@ -7,6 +7,8 @@ public class WeatherStation : IWeatherStation
 {
     private readonly List<IWeatherObserver> _observers;
     private readonly object _lock;
+    private int _observerCount;
+    public int ObserverCount => _observerCount;
     public WeatherStation() => (_observers, _lock) = (new(), new());
     /// <summary>
     /// Registers an observer to receive weather data updates.
@@ -20,8 +22,11 @@ public class WeatherStation : IWeatherStation
         ArgumentNullException.ThrowIfNull(observer);
         lock (_lock)
         {
-            if(!_observers.Contains(observer))
+            if (!_observers.Contains(observer))
+            {
                 _observers.Add(observer);
+                Interlocked.Increment(ref _observerCount);
+            }
         }
     }
     /// <summary>
@@ -36,8 +41,11 @@ public class WeatherStation : IWeatherStation
         ArgumentNullException.ThrowIfNull(observer);
         lock (_lock)
         {
-            if(_observers.Contains(observer))
+            if (_observers.Contains(observer))
+            {
                 _observers.Remove(observer);
+                Interlocked.Decrement(ref _observerCount);
+            }
         }
     }
     /// <summary>

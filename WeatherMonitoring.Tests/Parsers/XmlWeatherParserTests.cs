@@ -14,7 +14,7 @@ public sealed class XmlWeatherParserTests
     public XmlWeatherParserTests() => _weatherParser = new XmlWeatherParser();
 
     [Theory]
-    [ObjectTypeData(typeof(WeatherDataTestCaseRow), "Parsers", "XmlWeatherParser", "valid-xml-test-data.csv")]
+    [ObjectTypeData(typeof(WeatherDataTestCaseRow), "TestData", "Parsers", "XmlWeatherParser", "valid-xml-test-data.csv")]
     public void Parse_ShouldReturnValidWeatherData_WhenXmlIsValid(WeatherDataTestCaseRow testCase)
     {
         var result = _weatherParser.Parse(testCase.Input);
@@ -32,7 +32,7 @@ public sealed class XmlWeatherParserTests
     }
 
     [Theory]
-    [ObjectTypeData(typeof(InputTestCaseRow),  "Parsers", "XmlWeatherParser", "invalid-xml-test-data.csv")]
+    [ObjectTypeData(typeof(InputTestCaseRow),  "TestData", "Parsers", "XmlWeatherParser", "invalid-xml-test-data.csv")]
     public void Parse_ShouldThrowInvalidOperationException_WhenXmlIsNotValid(InputTestCaseRow testCase)
     {
         Action act = () => _weatherParser.Parse(testCase.Input);
